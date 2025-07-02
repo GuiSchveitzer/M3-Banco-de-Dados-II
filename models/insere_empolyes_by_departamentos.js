@@ -22,9 +22,7 @@ async function fetchBatch(batchSize = 1000, lastEmpNo = 0) {
         ON a.emp_no = b.emp_no
       LEFT JOIN departments c
         ON b.dept_no = c.dept_no
-      WHERE b.from_date >= '2000-01-01'
-        AND b.to_date <= '2020-12-31'
-        AND a.emp_no > ${lastEmpNo}
+      WHERE a.emp_no > ${lastEmpNo}
       ORDER BY a.emp_no, b.from_date
       LIMIT ${batchSize};
     `);
